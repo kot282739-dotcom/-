@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Queen Маникюр | Портфолио</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050505;
+      --text: #f5f5f5;
+      --muted: #bdbdbd;
+      --line: #262626;
+      --accent: #f2d3dc;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", sans-serif;
+    }
+
+    .brand {
+      letter-spacing: 0.08em;
+    }
+
+    .title-script {
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      letter-spacing: 0.04em;
+    }
+
+    .menu-btn {
+      position: relative;
+      color: var(--muted);
+      transition: color 0.3s ease;
+    }
+
+    .menu-btn::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.45rem;
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+
+    .menu-btn:hover,
+    .menu-btn.active {
+      color: var(--text);
+    }
+
+    .menu-btn:hover::after,
+    .menu-btn.active::after {
+      transform: scaleX(1);
+    }
+
+    .gallery-item {
+      opacity: 0;
+      transform: translateY(30px) scale(0.98);
+      transition: opacity 0.7s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .gallery-item.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease;
+      filter: saturate(0.95) contrast(1.03);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.04);
+      filter: saturate(1.08) contrast(1.08);
+    }
+
+    .hero-enter {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: heroIn 1s ease forwards;
+    }
+
+    @keyframes heroIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="px-6 sm:px-10 lg:px-16 pt-8 sm:pt-12 pb-8 border-b border-[#1a1a1a]">
+    <div class="max-w-[1600px] mx-auto hero-enter">
+      <p class="brand text-xs sm:text-sm text-neutral-400 uppercase tracking-[0.28em]">Queen Маникюр</p>
+      <h1 class="title-script text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-none mt-2 text-neutral-100">Портфолио</h1>
+      <nav class="mt-8 sm:mt-10 flex flex-wrap gap-x-8 gap-y-4 text-sm uppercase tracking-[0.15em]" aria-label="Категории работ">
+        <button class="menu-btn active" data-filter="all">Все работы</button>
+        <button class="menu-btn" data-filter="french">Френч</button>
+        <button class="menu-btn" data-filter="bright">Яркие</button>
+        <button class="menu-btn" data-filter="nude">Нюд</button>
+        <button class="menu-btn" data-filter="art">Дизайн</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="px-4 sm:px-8 lg:px-12 py-8 sm:py-10">
+    <section class="max-w-[1680px] mx-auto">
+      <div id="gallery" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 lg:gap-5">
+        <figure class="gallery-item overflow-hidden" data-category="nude french"><img loading="lazy" src="https://images.pexels.com/photos/12462141/pexels-photo-12462141.jpeg?auto=compress&cs=tinysrgb&w=900&h=1200&fit=crop" alt="Нюдовый маникюр с кольцами на белой ткани"></figure>
+        <figure class="gallery-item overflow-hidden" data-category="bright art"><img loading="lazy" src="https://images.pexels.com/photos/8259260/pexels-photo-8259260.jpeg?auto=compress&cs=tinysrgb&w=900&h=1200&fit=crop" alt="Яркий маникюр на руках с украшениями"></figure>
+        <figure class="gallery-item overflow-hidden" data-category="bright"><img loading="lazy" src="https://images.pexels.com/photos/17010952/pexels-photo-17010952/free-photo-of-womans-hand-with-red-nails.jpeg?auto=compress&cs=tinysrgb&w=900&h=1200&fit=crop" alt="Глубокий красный маникюр крупным планом"></figure>
+        <figure class="gallery-item overflow-hidden" data-category="nude art"><img loading="lazy" src="https://images.pexels.com/photos/18706407/pexels-photo-18706407/free-photo-of-manicure-and-rings-on-woman-hands.jpeg?auto=compress&cs=tinysrgb&w=900&h=1200&fit=crop" alt="Эстетичный маникюр на руках с кольцами"></figure>
+        <figure class="gallery-item overflow-hidden" data-category="nude"><img loading="lazy" src="https://images.pexels.com/photos/939834/pexels-photo-939834.jpeg?auto=compress&cs=tinysrgb&w=900&h=1200&fit=crop" alt="Нежный розовый маникюр со свитером"></figure>
+        <figure class="gallery-item overflow-hidden" data-category="bright"><img loading="lazy" src="https://images.pexels.com/photos/939836/pexels-photo-939836.jpeg?auto=compress&cs=tinysrgb&w=900&h=1200&fit=crop" alt="Сверкающий розовый маникюр макросъемка"></figure>
+        <figure class="gallery-item overflow-hidden" data-category="bright art"><img loading="lazy" src="https://images.pexels.com/photos/1839711/pexels-photo-1839711.png?auto=compress&cs=tinysrgb&w=900&h=1200&fit=crop" alt="Фиолетовый маникюр в мягком освещении"></figure>
+        <figure class="gallery-item overflow-hidden" data-category="art bright"><img loading="lazy" src="https://images.pexels.com/photos/5871831/pexels-photo-5871831.jpeg?auto=compress&cs=tinysrgb&w=900&h=1200&fit=crop" alt="Неоновый арт маникюр с яркими цветами"></figure>
+        <figure class="gallery-item overflow-hidden" data-category="art bright"><img loading="lazy" src="https://images.pexels.com/photos/6852174/pexels-photo-6852174.jpeg?auto=compress&cs=tinysrgb&w=900&h=1200&fit=crop" alt="Цветной маникюр на нескольких руках"></figure>
+        <figure class="gallery-item overflow-hidden" data-category="bright"><img loading="lazy" src="https://images.pexels.com/photos/10233985/pexels-photo-10233985.jpeg?auto=compress&cs=tinysrgb&w=900&h=1200&fit=crop" alt="Желтый маникюр с листьями в кадре"></figure>
+        <figure class="gallery-item overflow-hidden" data-category="french nude"><img loading="lazy" src="https://images.pexels.com/photos/7664093/pexels-photo-7664093.jpeg?auto=compress&cs=tinysrgb&w=900&h=1200&fit=crop" alt="Светлый маникюр с минималистичным дизайном"></figure>
+        <figure class="gallery-item overflow-hidden" data-category="bright art"><img loading="lazy" src="https://images.pexels.com/photos/887352/pexels-photo-887352.jpeg?auto=compress&cs=tinysrgb&w=900&h=1200&fit=crop" alt="Красно-белый маникюр с рисунком love"></figure>
+        <figure class="gallery-item overflow-hidden" data-category="nude french"><img loading="lazy" src="https://images.pexels.com/photos/12462141/pexels-photo-12462141.jpeg?auto=compress&cs=tinysrgb&w=900&h=1350&fit=crop" alt="Нюдовый маникюр и серебряные кольца"></figure>
+        <figure class="gallery-item overflow-hidden" data-category="nude"><img loading="lazy" src="https://images.pexels.com/photos/939834/pexels-photo-939834.jpeg?auto=compress&cs=tinysrgb&w=900&h=1350&fit=crop" alt="Розовый нюдовый маникюр на теплом текстиле"></figure>
+        <figure class="gallery-item overflow-hidden" data-category="bright"><img loading="lazy" src="https://images.pexels.com/photos/17010952/pexels-photo-17010952/free-photo-of-womans-hand-with-red-nails.jpeg?auto=compress&cs=tinysrgb&w=900&h=1350&fit=crop" alt="Алый маникюр в глубокой тени"></figure>
+        <figure class="gallery-item overflow-hidden" data-category="art"><img loading="lazy" src="https://images.pexels.com/photos/7664093/pexels-photo-7664093.jpeg?auto=compress&cs=tinysrgb&w=900&h=1350&fit=crop" alt="Дизайнерский маникюр с контрастным узором"></figure>
+        <figure class="gallery-item overflow-hidden" data-category="bright art"><img loading="lazy" src="https://images.pexels.com/photos/5871831/pexels-photo-5871831.jpeg?auto=compress&cs=tinysrgb&w=900&h=1350&fit=crop" alt="Яркий художественный маникюр в студийном свете"></figure>
+        <figure class="gallery-item overflow-hidden" data-category="nude art"><img loading="lazy" src="https://images.pexels.com/photos/18706407/pexels-photo-18706407/free-photo-of-manicure-and-rings-on-woman-hands.jpeg?auto=compress&cs=tinysrgb&w=900&h=1350&fit=crop" alt="Нежный маникюр на руках с браслетами"></figure>
+        <figure class="gallery-item overflow-hidden" data-category="bright"><img loading="lazy" src="https://images.pexels.com/photos/1839711/pexels-photo-1839711.png?auto=compress&cs=tinysrgb&w=900&h=1350&fit=crop" alt="Фиолетовый маникюр с мягкой фактурой свитера"></figure>
+        <figure class="gallery-item overflow-hidden" data-category="art bright"><img loading="lazy" src="https://images.pexels.com/photos/887352/pexels-photo-887352.jpeg?auto=compress&cs=tinysrgb&w=900&h=1350&fit=crop" alt="Графичный маникюр красный с белым"></figure>
+        <figure class="gallery-item overflow-hidden" data-category="bright"><img loading="lazy" src="https://images.pexels.com/photos/8259260/pexels-photo-8259260.jpeg?auto=compress&cs=tinysrgb&w=900&h=1350&fit=crop" alt="Маникюр с синими и яркими акцентами"></figure>
+        <figure class="gallery-item overflow-hidden" data-category="art"><img loading="lazy" src="https://images.pexels.com/photos/6852174/pexels-photo-6852174.jpeg?auto=compress&cs=tinysrgb&w=900&h=1350&fit=crop" alt="Арт маникюр в современной съемке"></figure>
+        <figure class="gallery-item overflow-hidden" data-category="nude"><img loading="lazy" src="https://images.pexels.com/photos/939836/pexels-photo-939836.jpeg?auto=compress&cs=tinysrgb&w=900&h=1350&fit=crop" alt="Нежно-розовый глянцевый маникюр макро"></figure>
+        <figure class="gallery-item overflow-hidden" data-category="bright"><img loading="lazy" src="https://images.pexels.com/photos/10233985/pexels-photo-10233985.jpeg?auto=compress&cs=tinysrgb&w=900&h=1350&fit=crop" alt="Яркий желтый маникюр при дневном свете"></figure>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const buttons = Array.from(document.querySelectorAll('.menu-btn'));
+    const items = Array.from(document.querySelectorAll('.gallery-item'));
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+
+        buttons.forEach((b) => b.classList.remove('active'));
+        button.classList.add('active');
+
+        items.forEach((item) => {
+          const categories = item.dataset.category.split(' ');
+          const matches = filter === 'all' || categories.includes(filter);
+          item.classList.toggle('hidden', !matches);
+        });
+      });
+    });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    items.forEach((item, index) => {
+      item.style.transitionDelay = `${index * 35}ms`;
+      observer.observe(item);
+    });
+  </script>
+</body>
+</html>
